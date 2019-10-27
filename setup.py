@@ -8,11 +8,12 @@ setup(
   author = 'Vishwesh Kumar',                   # Type in your name
   author_email = 'vishwesh18119@iiitd.ac.in',      # Type in your E-Mail
   url = 'https://github.com/precog-recr/TikPy',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/precog-recr/TikPy/archive/v_01.tar.gz',    # I explain this later on
   keywords = ['SOME', 'MEANINGFULL', 'KEYWORDS'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
-          'validators',
-          'beautifulsoup4',
+          'json',
+          'bs4',
+          'newspaper3k'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
