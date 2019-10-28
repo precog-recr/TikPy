@@ -1,1 +1,1 @@
-from TikPy import API
+from TikPy.TikAPI import API

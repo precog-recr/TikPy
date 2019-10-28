@@ -25,19 +25,15 @@ class API():
                 text = text.replace('\n', '')
                 return json.loads(text)
 
-    def get_user_info(self, name, from_video):
+    def get_user_info(self, name):
         """
         :param name of user:
         :return: user Data  
         """
+        url = 'https://www.tiktok.com/@' + name
         jsoned = ''
-        if from_video:
-            start_index = name.find('/video/')
-            print(name[:start_index])
-            jsoned = get_jsoned(name[:start_index])
-        else:
-            jsoned = get_jsoned(name)
         try:
+            jsoned = self.get_jsoned(url)
             return jsoned['/@:uniqueId']['userData']
         except Exception as E:
             return {}
@@ -45,24 +41,24 @@ class API():
 
     def get_user_videos(self, name):
         url = 'https://www.tiktok.com/@' + name
-        jsoned = get_jsoned(url)
+        jsoned = self.get_jsoned(url)
         return jsoned['/@:uniqueId']['itemList']
 
 
     def get_trending_hashtags(self):
         url = 'https://www.tiktok.com/trending'
-        jsoned = get_jsoned(url)
+        jsoned = self.get_jsoned(url)
         return jsoned['/trending']['challengeList']
 
 
     def get_trending_posts(self):
         url = 'https://www.tiktok.com/trending'
-        jsoned = get_jsoned(url)
+        jsoned = self.get_jsoned(url)
         return jsoned['/trending']['itemList']
 
 
     def get_video_info(self, url):
-        jsoned = get_jsoned(url)
+        jsoned = self.get_jsoned(url)
         try:
             temp = jsoned['/@:uniqueId/video/:id']['videoData']
             temp['url'] = url
@@ -72,27 +68,27 @@ class API():
             return {}
 
 
-    def get_hash_recommend_list(self, name):
-        url = 'https://www.tiktok.com/tag/' + name
-        jsoned = get_jsoned(url)
+    def get_hash_recommend_list(self, hashtag):
+        url = 'https://www.tiktok.com/tag/' + hashtag
+        jsoned = self.get_jsoned(url)
         return jsoned['/tag/:name']['recommendList']
 
 
-    def get_hash_videos(self, name):
-        url = 'https://www.tiktok.com/tag/' + name
+    def get_hash_videos(self, hashtag):
+        url = 'https://www.tiktok.com/tag/' + hashtag
         jsoned = get_jsoned(url)
         return jsoned['/tag/:name']['itemList']
 
 
     def get_videos_from_music(self, music_id, name):
         url = 'https://www.tiktok.com/music/'+name.replace(' ', '-') + music_id
-        jsoned = get_jsoned(url)
+        jsoned = self.get_jsoned(url)
         return jsoned['/music/*-:id']['itemList']
 
 
     def get_music_recommend_list(self, music_id, name):
         url = 'https://www.tiktok.com/music' + name.replace(' ', '-') + music_id
-        jsoned = get_jsoned(url)
+        jsoned = self.get_jsoned(url)
         return jsoned['/music/*-:id']['recommendList']
 
 
