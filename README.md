@@ -8,10 +8,10 @@ pip install TikPy
 ```
 ## Quick Start
 ```python
-from TikPy import TikAPI as API
+from TikPy import TikAPI
 
-api = API()
-api.get_user_info('avinasht', from_video=False)
+api = TikAPI.API()
+api.get_user_info('leenabhushan')
 ```
 
 ## Documentation
