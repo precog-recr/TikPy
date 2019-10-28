@@ -1,4 +1,0 @@
-{
-    "python.pythonPath": "/home/avinasht/.conda/envs/eagle-eye-dash/bin/python",
-    "python.formatting.provider": "black"
-}
